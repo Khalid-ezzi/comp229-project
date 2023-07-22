@@ -11,16 +11,31 @@
 
             <div *ngFor="let record of stage.data" class=" m-auto rounded-xl shadow-lg p-2 bg-emerald-200">
 
-                <h3>
-                   Name: <br> {{record.name}}
-                </h3>
-                <h3>
-                    {{record.job_title}}
-                </h3>
-                <h3>
-                    {{record.assign_to}}
-                </h3>
+                <div class="info">
+                    <h3 class="">
+                       Name: 
+                    </h3>
+                    <p>{{record.name}}</p>
+                </div>
 
+                <div class="info">
+                    <h3>
+                        interested in:
+                    </h3>
+                    <p mb-12>
+                        {{record.job_title}}
+                    </p>
+                </div>
+
+
+                <div class="info">
+                    <h3>
+                        Assign To:
+                    </h3>
+                    <p>
+                        {{record.assign_to}}
+                    </p>
+                </div>
             </div>
         </div>
 
