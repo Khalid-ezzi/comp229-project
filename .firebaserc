@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "comp229-project-149a3": {
+      "hosting": {
+        "comp229-project": [
+          "comp229-project-149a3"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "comp229-project-149a3"
+  }
+}

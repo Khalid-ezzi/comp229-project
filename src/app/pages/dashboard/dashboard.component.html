@@ -1,0 +1,28 @@
+<section class="wrapper mt-12">
+    <h1 class="text-center text-5xl ">
+        submission 
+    </h1>
+    <div class="column-wrapper flex w-fit mx-auto mt-12">
+        
+        <div *ngFor="let stage of all_stages" class="mx-6 bg-white w-52 rounded-xl shadow-lg p-6">
+            <h2 class="text-center text-slate-500">
+                {{stage.title}}
+            </h2>
+
+            <div *ngFor="let record of stage.data" class=" m-auto rounded-xl shadow-lg p-2 bg-emerald-200">
+
+                <h3>
+                   Name: <br> {{record.name}}
+                </h3>
+                <h3>
+                    {{record.job_title}}
+                </h3>
+                <h3>
+                    {{record.assign_to}}
+                </h3>
+
+            </div>
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,16 @@
+.on {
+    opacity: 1;
+  }
+  .off {
+    opacity: 1;
+  }
+
+@media only screen and (max-width: 850px) {
+
+    .on {
+        opacity: 1;
+      }
+      .off {
+        opacity: 0;
+      }
+}
