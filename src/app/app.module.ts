@@ -18,6 +18,7 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { AddNewClientComponent } from './pages/add-new-client/add-new-client.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
-    NavbarComponent
+    NavbarComponent,
+    AddNewClientComponent
   ],
   imports: [
     BrowserModule,

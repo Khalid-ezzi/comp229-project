@@ -1,0 +1,71 @@
+<section class="mt-16">
+  <div class="form-wrapper bg-white shadow-lg rounded-xl p-6 w-3/5 m-auto">
+    <form
+      class=" m-auto flex flex-wrap justify-center"
+      autocomplete="on"
+    >
+      <!-- Component: Plain invalid input  -->
+      <div class="relative my-6 w-2/5 m-6">
+        <input
+          type="email"
+          placeholder="Email"
+          [formControl]="email"
+          class="detail-input relative w-full h-10 px-4 text-sm transition-all border-b outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
+        />
+      </div>
+      <!-- End Plain invalid input  -->
+
+      <div class="relative my-6 w-2/5 m-6">
+        <input
+          type="text"
+          placeholder="Name"
+          [formControl]="name"
+          class="detail-input relative w-full h-10 px-4 text-sm transition-all border-b outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
+        />
+      </div>
+
+      <div class="relative my-6 w-2/5 m-6">
+        <input
+          type="text"
+          placeholder="Phone"
+          [formControl]="phone"
+          type="text"
+          class="detail-input relative w-full h-10 px-4 text-sm transition-all border-b outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
+        />
+      </div>
+
+      <div class="relative my-6 w-2/5 m-6">
+        <input
+          type="text"
+          placeholder="Job Title"
+          [formControl]="job_title"
+          type="text"
+          class="detail-input relative w-full h-10 px-4 text-sm transition-all border-b outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
+        />
+      </div>
+
+      <div class="relative my-6 w-4/5 m-6">
+        <textarea
+          type="text"
+          rows="8"
+          cols="6"
+          placeholder="Message"
+          [formControl]="message"
+          type="text"
+          class="detail-input relative w-full px-4 text-sm transition-all border-b outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
+        ></textarea>
+      </div>
+    </form>
+
+
+    <!-- Component: Large primary disabled button -->
+    <button 
+        [disabled]="!isFilled()"
+        (click)="submit()"
+     class="flex m-auto items-center justify-center h-12 gap-2 px-6 text-sm font-medium tracking-wide text-white transition duration-300 rounded-full whitespace-nowrap bg-emerald-500 hover:bg-emerald-600 focus:bg-emerald-700 disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none">
+        <span>Disabled large</span>
+    </button>
+    <!-- End Large primary disabled button -->
+
+  </div>
+</section>

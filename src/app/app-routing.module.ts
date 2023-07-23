@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { AddNewClientComponent } from './pages/add-new-client/add-new-client.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,9 @@ const routes: Routes = [
   {path: 'register', 
   component: RegisterComponent
   },
-
+  {path: 'add-new-client', 
+  component: AddNewClientComponent
+  },
 ];
 
 @NgModule({
