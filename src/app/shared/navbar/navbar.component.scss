@@ -3,6 +3,7 @@
   }
   .off {
     opacity: 1;
+
   }
 
 @media only screen and (max-width: 850px) {
@@ -12,5 +13,7 @@
       }
       .off {
         opacity: 0;
+        visibility: hidden;
+        display: none;
       }
 }
