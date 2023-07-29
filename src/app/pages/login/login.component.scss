@@ -13,3 +13,37 @@
         @apply text-emerald-400;
     }
   }
+
+  .pop-box {
+    // justify-content: space-between;
+    margin: auto;
+    z-index: 99;
+    width: 100vw;
+    height: 100vh;
+    bottom: 0;
+    position: fixed;
+    background-color: #000000b8;
+    text-align: center;
+  
+    .cancel-btn{
+        margin-top: 25% !important;
+    }
+    h3 {
+      text-align: center;
+      margin: auto;
+      width: 100%;
+      min-width: 160px;
+      font-size: 30px;
+      margin-top: 20px;
+      word-wrap: break-word
+
+    }
+    .btn {
+        @apply mx-auto my-12 text-white;
+      cursor: pointer;
+  
+      &:focus {
+        outline: none;
+      }
+    }
+  }

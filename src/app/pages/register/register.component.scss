@@ -15,10 +15,11 @@
     h3 {
       text-align: center;
       margin: auto;
-      width: max-content;
+      width: 100%;
       min-width: 160px;
       font-size: 30px;
       margin-top: 20px;
+      word-wrap: break-word
     }
     .btn {
         @apply mx-auto my-12 text-white;

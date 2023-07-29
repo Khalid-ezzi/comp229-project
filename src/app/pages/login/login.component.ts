@@ -12,6 +12,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit{
 
+  is_error = false;
+  error_msg: any;
 
   email:any = new FormControl('',
     [Validators.required, Validators.email]
@@ -33,6 +35,10 @@ export class LoginComponent implements OnInit{
   }
 
 
+  changeErrorView() {
+    this.is_error = !this.is_error;
+  }
+
   isFilled(){
     if (this.email.invalid || this.password.invalid) {
       return false
@@ -43,18 +49,16 @@ export class LoginComponent implements OnInit{
 
   login() {
     if (this.isFilled()) {
-      // this.afAuth.signInWithEmailAndPassword(this.email.value, this.password.value)
-      //   .then((userCredential) => {
-      //     this.cookies.set('is_auth', 'true')
-      //     this.router.navigate(['/']);
-      //   })
-      //   .catch((error) => {
-      //     // Handle sign-in errors
-      //     console.error(error);
-      // });
-
-     let x = this.auth.login(this.email.value, this.password.value)
-     console.log(x)
+      this.afAuth.signInWithEmailAndPassword(this.email.value, this.password.value)
+        .then((userCredential) => {
+          this.cookies.set('login', 'true')
+          this.router.navigate(['/']);
+        })
+        .catch((error) => {
+          this.is_error = true
+          this.error_msg = error.message;
+          console.error(error);
+      });
     }
   }
 }
