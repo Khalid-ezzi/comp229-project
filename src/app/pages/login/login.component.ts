@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit{
 
   is_error = false;
   error_msg: any;
+  is_Visibil = false;
+  input_type = 'password';
 
   email:any = new FormControl('',
     [Validators.required, Validators.email]
@@ -37,6 +39,16 @@ export class LoginComponent implements OnInit{
 
   changeErrorView() {
     this.is_error = !this.is_error;
+  }
+
+  passwordView() {
+    this.is_Visibil = !this.is_Visibil;
+
+    if (this.is_Visibil) {
+      this.input_type = 'text';
+    } else {
+      this.input_type = 'password';
+    }
   }
 
   isFilled(){
