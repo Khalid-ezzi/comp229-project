@@ -19,6 +19,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { AddNewClientComponent } from './pages/add-new-client/add-new-client.component';
+import { FullDetailsComponent } from './pages/full-details/full-details.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AddNewClientComponent } from './pages/add-new-client/add-new-client.com
     RegisterComponent,
     DashboardComponent,
     NavbarComponent,
-    AddNewClientComponent
+    AddNewClientComponent,
+    FullDetailsComponent
   ],
   imports: [
     BrowserModule,

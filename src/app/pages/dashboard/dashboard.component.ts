@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit { // Implement the OnInit inte
     {title:'Other', data:[]},
   ]
 
-  constructor(private firestore: Firestore) { // Make sure to inject 'Firestore' properly
+  constructor(private firestore: Firestore) { 
 
   }
 

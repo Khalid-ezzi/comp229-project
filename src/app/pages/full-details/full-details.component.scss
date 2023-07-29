@@ -1,0 +1,11 @@
+h1{
+    font-size: 3rem;
+}
+
+.view-info{
+    @apply my-6 mx-6 w-2/5;
+
+    h2{
+        @apply shadow-sm rounded-xl p-2 bg-gray-100 text-slate-500;
+    }
+}

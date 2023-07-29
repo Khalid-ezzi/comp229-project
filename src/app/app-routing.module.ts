@@ -4,6 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { AddNewClientComponent } from './pages/add-new-client/add-new-client.component';
+import { FullDetailsComponent } from './pages/full-details/full-details.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,9 @@ const routes: Routes = [
   },
   {path: 'add-new-client', 
   component: AddNewClientComponent
+  },
+  {path: 'full-details/:id', 
+  component: FullDetailsComponent
   },
 ];
 
