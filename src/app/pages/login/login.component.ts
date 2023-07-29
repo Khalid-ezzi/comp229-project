@@ -58,6 +58,10 @@ export class LoginComponent implements OnInit{
     return true
   }
 
+  rememberMe(){
+    
+  }
+
 
   login() {
     if (this.isFilled()) {
