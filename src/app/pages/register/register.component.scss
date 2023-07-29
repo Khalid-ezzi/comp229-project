@@ -1,0 +1,47 @@
+.pop-box {
+    // justify-content: space-between;
+    margin: auto;
+    z-index: 99;
+    width: 100vw;
+    height: 100vh;
+    bottom: 0;
+    position: fixed;
+    background-color: #000000b8;
+    text-align: center;
+  
+    .cancel-btn{
+        margin-top: 25% !important;
+    }
+    h3 {
+      text-align: center;
+      margin: auto;
+      width: max-content;
+      min-width: 160px;
+      font-size: 30px;
+      margin-top: 20px;
+    }
+    .btn {
+        @apply mx-auto my-12 text-white;
+      cursor: pointer;
+  
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .title{
+    text-align: center;
+    font-size: 40px;
+  }
+
+  .register{
+    margin-top: 35px !important;
+    margin-left: 10px;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover{
+        @apply text-emerald-400;
+    }
+  }

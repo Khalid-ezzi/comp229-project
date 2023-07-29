@@ -87,15 +87,6 @@ export class DashboardComponent implements OnInit { // Implement the OnInit inte
     }
   }
 
-  async updatingRecords(id:any, collection:any, data:any){
-    let update = await collection(this.firestore, collection).doc(id).update(data)
-      .then(() => {
-        console.log('Document successfully updated in Firestore!');
-      })
-      .catch((error:any) => {
-        console.error('Error updating document in Firestore:', error);
-      });
-  }
 
   getContactedData() {
 

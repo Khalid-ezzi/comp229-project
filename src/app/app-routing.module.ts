@@ -20,7 +20,8 @@ const routes: Routes = [
   component: RegisterComponent
   },
   {path: 'add-new-client', 
-  component: AddNewClientComponent
+  component: AddNewClientComponent,
+  canActivate:[AuthGuardService]
   },
   {path: 'full-details/:id', 
   component: FullDetailsComponent,
