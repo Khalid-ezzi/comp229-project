@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Firestore, collectionData, collection, DocumentData } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, DocumentData,doc,  setDoc } from '@angular/fire/firestore';
 import { FirbaseServiceService } from 'src/app/services/firbase-service.service';
+
 import {
   CdkDrag,
   CdkDragDrop,
@@ -58,14 +59,31 @@ export class DashboardComponent implements OnInit { // Implement the OnInit inte
       let stage_index = event.container.id.split('-')[3];
       let stage_name = this.all_stages[stage_index].title;
       let data = this.all_stages[stage_index].data[event.currentIndex]
-      console.log(stage_name);
-      console.log(data.id);
+      // console.log(stage_name);
+      console.log(data);
 
       let new_stage ={
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        assign_to: data.assign_to,
+        job_title: data.job_title,
+        message: data.message,
         status: stage_name
       }
-      this.updatingRecords(data.id, 'contact-us', new_stage)
+      console.log(new_stage)
+      this.saveChanges(data.id, new_stage)
       //updateing Method in here
+    }
+  }
+
+  async saveChanges(id:any, data:any) {
+    try {
+      const documentRef = doc(this.firestore, 'contact-us', id);
+      await setDoc(documentRef, data);
+      window.location.reload()
+    } catch (error) {
+      console.error('Error saving changes:', error);
     }
   }
 

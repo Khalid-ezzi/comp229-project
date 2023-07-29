@@ -22,6 +22,7 @@ export class FullDetailsComponent implements OnInit{
   phone:any
   name:any
   message:any
+  status:any
 
   constructor(
     private firestore: Firestore,
@@ -54,7 +55,7 @@ export class FullDetailsComponent implements OnInit{
     this.assign_to = this.client_info.assign_to
     this.job_title = this.client_info.job_title
     this.message = this.client_info.message
-
+    this.status = this.client_info.status
   }
 
   changeEditView(){
@@ -74,7 +75,8 @@ export class FullDetailsComponent implements OnInit{
         phone: this.phone,
         assign_to: this.assign_to,
         job_title: this.job_title,
-        message: this.message
+        message: this.message,
+        status: this.status
       });
       this.is_edit = false; // Disable edit mode after saving changes
     } catch (error) {
