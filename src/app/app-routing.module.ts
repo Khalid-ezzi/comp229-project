@@ -5,11 +5,13 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { AddNewClientComponent } from './pages/add-new-client/add-new-client.component';
 import { FullDetailsComponent } from './pages/full-details/full-details.component';
-
+import { AuthGuardService } from './services/auth-guard.service';
+AuthGuardService
 
 const routes: Routes = [
   {path: '', 
-  component: DashboardComponent
+  component: DashboardComponent,
+  canActivate:[AuthGuardService]
   },
   {path: 'login', 
   component: LoginComponent
@@ -21,7 +23,8 @@ const routes: Routes = [
   component: AddNewClientComponent
   },
   {path: 'full-details/:id', 
-  component: FullDetailsComponent
+  component: FullDetailsComponent,
+  canActivate:[AuthGuardService]
   },
 ];
 

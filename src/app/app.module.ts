@@ -8,6 +8,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth'; // Import this module
 import { FirestoreModule, provideFirestore,getFirestore } from '@angular/fire/firestore';
 
+import {DragDropModule} from '@angular/cdk/drag-drop';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -43,7 +44,8 @@ import { FullDetailsComponent } from './pages/full-details/full-details.componen
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    DragDropModule
 
   ],
   providers: [],

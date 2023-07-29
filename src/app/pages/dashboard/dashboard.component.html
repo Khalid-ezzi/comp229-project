@@ -2,14 +2,23 @@
     <h1 class="text-center text-5xl ">
         submission 
     </h1>
-    <div class="column-wrapper flex w-fit mx-auto mt-12">
+    <div class="column-wrapper flex w-fit mx-auto mt-12" cdkDropListGroup>
         
-        <div *ngFor="let stage of all_stages" class="mx-6 bg-white w-80 rounded-xl shadow-lg p-6">
+        <div 
+            *ngFor="let stage of all_stages; let i = index"
+            class="mx-6 bg-white w-80 rounded-xl shadow-lg p-6"
+            cdkDropList
+            [cdkDropListData]="stage.data"
+            (cdkDropListDropped)="drop($event)"
+        >
             <h2 class="text-center text-slate-500">
                 {{stage.title}}
             </h2>
 
-            <div *ngFor="let record of stage.data" class=" m-auto rounded-xl shadow-lg p-2 bg-emerald-200 my-6">
+            <div *ngFor="let record of stage.data; let i = index" 
+            cdkDrag
+            routerLink="full-details/{{record.id}}"
+            class=" m-auto rounded-xl shadow-lg p-2 bg-emerald-200 my-6 card-box" >
 
                 <div class="info">
                     <h3 class="">

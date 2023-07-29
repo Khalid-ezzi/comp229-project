@@ -73,6 +73,18 @@
           <span>Add New</span>
         </a>
       </li>
+
+      <li role="none" class="flex items-stretch">
+        <a
+          role="menuitem"
+          aria-haspopup="false"
+          tabindex="0"
+          class="flex items-center gap-2 py-4 transition-colors duration-300 hover:text-emerald-500 focus:bg-emerald-50 focus:outline-none focus-visible:outline-none lg:px-8"
+          (click)="toggleMobileNav(); logout()"
+        >
+          <span>Logout</span>
+        </a>
+      </li>
     </ul>
     
     </nav>

@@ -11,7 +11,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class AddNewClientComponent {
 
 
-  status = 'New'
+  status = 'In Progress'
   assign_to = 'Khaled'
   email:any = new FormControl('',
   [Validators.required, Validators.email]

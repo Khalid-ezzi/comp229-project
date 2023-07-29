@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {CookieService} from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { FormControl, FormsModule, Validators } from '@angular/forms';
-
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +25,8 @@ export class LoginComponent implements OnInit{
   constructor(
     private afAuth: AngularFireAuth,
     private cookies:CookieService,
-    private router: Router
+    private router: Router,
+    private auth:AuthService
     ) { }
 
   ngOnInit(): void {
@@ -42,15 +43,18 @@ export class LoginComponent implements OnInit{
 
   login() {
     if (this.isFilled()) {
-      this.afAuth.signInWithEmailAndPassword(this.email.value, this.password.value)
-        .then((userCredential) => {
-          this.cookies.set('is_auth', 'true')
-          this.router.navigate(['/']);
-        })
-        .catch((error) => {
-          // Handle sign-in errors
-          console.error(error);
-      });
+      // this.afAuth.signInWithEmailAndPassword(this.email.value, this.password.value)
+      //   .then((userCredential) => {
+      //     this.cookies.set('is_auth', 'true')
+      //     this.router.navigate(['/']);
+      //   })
+      //   .catch((error) => {
+      //     // Handle sign-in errors
+      //     console.error(error);
+      // });
+
+     let x = this.auth.login(this.email.value, this.password.value)
+     console.log(x)
     }
   }
 }

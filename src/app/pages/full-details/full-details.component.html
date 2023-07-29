@@ -1,47 +1,78 @@
+<div class="p-6 mt-20 pop-box" *ngIf="is_delete">
+    <button
+      (click)="changeDeleteView()"
+      class="cancel-btn inline-flex items-center justify-center h-10 gap-2 px-5 text-sm font-medium tracking-wide text-white transition duration-300 rounded focus-visible:outline-none whitespace-nowrap bg-emerald-500 hover:bg-emerald-600 focus:bg-emerald-700 disabled:cursor-not-allowed disabled:border-emerald-300 disabled:bg-emerald-300 disabled:shadow-none"
+    >
+      <svg class="svg-icon-cancel" viewBox="0 0 20 20">
+        <path
+          fill="none"
+          d="M11.469,10l7.08-7.08c0.406-0.406,0.406-1.064,0-1.469c-0.406-0.406-1.063-0.406-1.469,0L10,8.53l-7.081-7.08
+            c-0.406-0.406-1.064-0.406-1.469,0c-0.406,0.406-0.406,1.063,0,1.469L8.531,10L1.45,17.081c-0.406,0.406-0.406,1.064,0,1.469
+            c0.203,0.203,0.469,0.304,0.735,0.304c0.266,0,0.531-0.101,0.735-0.304L10,11.469l7.08,7.081c0.203,0.203,0.469,0.304,0.735,0.304
+            c0.267,0,0.532-0.101,0.735-0.304c0.406-0.406,0.406-1.064,0-1.469L11.469,10z"
+        ></path>
+      </svg>
+      <span>Cancel</span>
+    </button>
+
+    <div class="inner-text-full my-12 bg-gray-200 w-2/5 mx-auto rounded-xl p-6">
+      <h3>You will delete this record permenently</h3>
+      <h3>Are you sure You want to do this?</h3>
+
+      <p
+        class="w-1/4 bg-red-300 text-2xl py-2 rounded-xl shadow-xl btn"
+        (click)="deleteContact()"
+      >
+        Delete
+      </p>
+    </div>
+  </div>
+
 <div class="wrapper mt-16">
 
-    <div class="form-wrapper">
+    <div class="form-wrapper w-4/5 m-auto">
 
         <h1 class="text-center text-emerald-500">Client Detail</h1>
 
-        <div>
-            <p>Edit</p>
+        <div class="w-fit ml-auto mr-20 flex btn-box"  *ngIf="!is_edit">
+            <p (click)="changeEditView()" class="py-4 px-8 bg-yellow-400 rounded-xl text-xl text-center">Edit</p>
+
+            <p (click)="changeDeleteView()" class="py-4 px-8 bg-red-400 rounded-xl text-xl text-center">Delete</p>
         </div>
-        <form class="flex flex-wrap w-4/5 m-auto justify-start shadow-lg rounded-xl bg-white">
+
+        <div class="w-fit m-auto btn-box" *ngIf="is_edit">
+            <p (click)="changeEditView()" class="py-4 px-8 bg-red-300 rounded-xl text-xl text-center">Cancel</p>
+        </div>
+
+        <div class="p-6 flex flex-wrap w-4/5 m-auto justify-between shadow-lg rounded-xl bg-white">
 
             <!-- Component:-->
-            <div class="view-info">
+            <div class="view-info" *ngIf="!is_edit">
+                <h3>Name</h3>
                 <h2>
-                 {{client_info.name}}
+                 {{name}}
                 </h2>
             </div>
             <div class="relative my-6 mx-6 w-2/5" *ngIf="is_edit">
-                <input type="text" placeholder="Name" class="relative w-full h-10 px-4 text-sm placeholder-transparent transition-all border-b outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400" />
+                <input [disabled]="!is_edit" [(ngModel)]="name" type="text" placeholder="Name" class="relative w-full h-10 px-4 text-sm placeholder-transparent transition-all border-b outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400" />
                 <label class="cursor-text peer-focus:cursor-default absolute left-2 -top-2 z-[1] px-2 text-xs text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-emerald-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent">
                  Name
                 </label>
             </div>
             <!-- End input  -->
 
-            <!-- Component:-->
-            <div class="relative my-6 mx-6 w-2/5" *ngIf="is_edit">
-                <input type="text" placeholder="Job Title" class="relative w-full h-10 px-4 text-sm placeholder-transparent transition-all border-b outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400" />
-                <label class="cursor-text peer-focus:cursor-default absolute left-2 -top-2 z-[1] px-2 text-xs text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-emerald-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent">
-                    Job Title
-                </label>
-            </div>
-            <!-- End input  -->
 
             <!-- Component: -->
 
-            <div class="view-info">
+            <div class="view-info" *ngIf="!is_edit">
+                <h3>Email</h3>
                 <h2>
-                 {{client_info.email}}
+                 {{email}}
                 </h2>
             </div>
 
             <div class="relative my-6 mx-6 w-2/5" *ngIf="is_edit">
-                <input type="email" placeholder="Email" class="relative w-full h-10 px-4 text-sm placeholder-transparent transition-all border-b outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400" />
+                <input [(ngModel)]="email" type="email" placeholder="Email" class="relative w-full h-10 px-4 text-sm placeholder-transparent transition-all border-b outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400" />
                 <label class="cursor-text peer-focus:cursor-default absolute left-2 -top-2 z-[1] px-2 text-xs text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-emerald-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent">
                 Email
                 </label>
@@ -50,14 +81,15 @@
 
             <!-- Component:-->
 
-            <div class="view-info">
+            <div class="view-info" *ngIf="!is_edit">
+                <h3>Job Title</h3>
                 <h2>
-                 {{client_info.job_title}}
+                 {{job_title}}
                 </h2>
             </div>
 
             <div class="relative my-6 mx-6 w-2/5" *ngIf="is_edit">
-                <input type="text" placeholder="Job Title" class="relative w-full h-10 px-4 text-sm placeholder-transparent transition-all border-b outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400" />
+                <input [(ngModel)]="job_title" type="text" placeholder="Job Title" class="relative w-full h-10 px-4 text-sm placeholder-transparent transition-all border-b outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400" />
                 <label class="cursor-text peer-focus:cursor-default absolute left-2 -top-2 z-[1] px-2 text-xs text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-emerald-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent">
                     Job Title
                 </label>
@@ -65,11 +97,53 @@
             <!-- End input  -->
 
 
-           <div >
+            <!-- Component:-->
+            <div class="view-info" *ngIf="!is_edit">
+                <h3>Phone</h3>
+                <h2>
+                 {{phone}}
+                </h2>
+            </div>
 
-           </div> 
+            <div class="relative my-6 mx-6 w-2/5" *ngIf="is_edit">
+                <input [(ngModel)]="phone" type="text" placeholder="Phone" class="relative w-full h-10 px-4 text-sm placeholder-transparent transition-all border-b outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400" />
+                <label class="cursor-text peer-focus:cursor-default absolute left-2 -top-2 z-[1] px-2 text-xs text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-emerald-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent">
+                    Phone
+                </label>
+            </div>
+            <!-- End input  -->
 
-        </form>
+            <!-- Component:-->
+            <div class="view-info" *ngIf="!is_edit">
+                <h3>Assign To</h3>
+                <h2>
+                 {{assign_to}}
+                </h2>
+            </div>
+
+            <div class="relative my-6 mx-6 w-2/5" *ngIf="is_edit">
+                <input [(ngModel)]="assign_to" type="text" placeholder="Assign To" class="relative w-full h-10 px-4 text-sm placeholder-transparent transition-all border-b outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400" />
+                <label class="cursor-text peer-focus:cursor-default absolute left-2 -top-2 z-[1] px-2 text-xs text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-emerald-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent">
+                    Assign To
+                </label>
+            </div>
+            <!-- End input  -->          
+
+
+            <!-- Component: Plain large size disabled textarea -->
+            <div class="relative w-4/5 m-auto" *ngIf="!is_edit">
+                <textarea [(ngModel)]="message" rows="5" disabled class="relative rounded-xl text-2xl w-full p-4 placeholder-transparent transition-all border-b outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-slate-400"></textarea>
+                <label for="id-l06" class="cursor-text peer-focus:cursor-default absolute left-2 -top-5 z-[1] px-2 text-2xl text-emerald-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-emerald-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-emerald-400 peer-disabled:before:bg-transparent">
+                    Message
+                </label>
+            </div>
+            <!-- End Plain large size disabled textarea -->
+
+        </div>
+        
+        <div class="w-fit m-auto btn-box" *ngIf="is_edit">
+            <p (click)="saveChanges()" class="py-4 m-auto w-fit px-8 bg-green-300 rounded-xl text-xl text-center">Submit</p>
+        </div>
 
     </div>
 </div>
