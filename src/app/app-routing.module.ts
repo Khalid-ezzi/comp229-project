@@ -16,12 +16,11 @@ const routes: Routes = [
   {path: 'login', 
   component: LoginComponent
   },
-  {path: 'register', 
+  {path: 'register/new/123', 
   component: RegisterComponent
   },
   {path: 'add-new-client', 
-  component: AddNewClientComponent,
-  canActivate:[AuthGuardService]
+  component: AddNewClientComponent
   },
   {path: 'full-details/:id', 
   component: FullDetailsComponent,
