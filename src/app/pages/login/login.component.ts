@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit{
   error_msg: any;
   is_Visibil = false;
   input_type = 'password';
-
+  is_checked = false
   email:any = new FormControl('',
     [Validators.required, Validators.email]
   );
@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit{
     ) { }
 
   ngOnInit(): void {
+    this.getRememberMeValue()
   }
 
 
@@ -58,16 +59,50 @@ export class LoginComponent implements OnInit{
     return true
   }
 
-  rememberMe(){
-    
+  createUserCookies(){
+    this.cookies.set('username', this.email.value)
+    this.cookies.set('password', this.password.value)
   }
 
+  deleteUserCookies(){
+    this.cookies.delete('username')
+    this.cookies.delete('password')
+  }
+
+  getRememberMeValue(){
+    let is_exist = this.cookies.check('username')
+    if (is_exist) {
+      let _email = this.cookies.get('username')
+      let _password = this.cookies.get('password')
+      this.is_checked = true
+      this.email.setValue(_email)
+      this.password.setValue(_password) 
+    }
+  }
+
+  isRememberMe(){
+    console.log(this.is_checked)
+    return this.is_checked = !this.is_checked
+  }
+
+  submitRememberMe(){
+    if (this.is_checked) {
+      this.createUserCookies()
+    }
+    else if(!this.is_checked){
+      let is_exist = this.cookies.check('username')
+      if (is_exist) {
+        this.deleteUserCookies()
+      }
+    }
+  }
 
   login() {
     if (this.isFilled()) {
       this.afAuth.signInWithEmailAndPassword(this.email.value, this.password.value)
         .then((userCredential) => {
           this.cookies.set('login', 'true')
+          this.submitRememberMe()
           this.router.navigate(['/']);
         })
         .catch((error) => {
