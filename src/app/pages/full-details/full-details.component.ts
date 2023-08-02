@@ -24,6 +24,7 @@ export class FullDetailsComponent implements OnInit{
   message:any
   status:any
 
+  all_option =['New', 'In Progress', 'Contacted', 'Complete', 'Other']
   constructor(
     private firestore: Firestore,
     private route: ActivatedRoute,
